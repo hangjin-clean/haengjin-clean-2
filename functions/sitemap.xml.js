@@ -1,0 +1,2 @@
+import { records } from '../data.js';
+export function onRequestGet({request}){const origin=new URL(request.url).origin;const x='<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+['/','/regions.html',...records.map((_,i)=>'/region/'+(i+1))].map(p=>'<url><loc>'+origin+p+'</loc></url>').join('')+'</urlset>';return new Response(x,{headers:{'content-type':'application/xml; charset=utf-8'}})}
